@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+.yozma-newsletter {
+    display: flex;
+    max-width: 1000px;
+    margin: auto;
+    background: #FCF4F4;
+    font-family: 'Poppins', serif;
+}
+
+.yozma-newsletter-left {
+    flex: 1;
+    padding: 20px;
+}
+
+.yozma-newsletter-left-title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 42px;
+}
+
+.yozma-newsletter-left-subtitle {
+    font-size: 16px;
+}
+
+.yozma-newsletter-right {
+    flex: 1;
+    padding: 20px;
+}
+
+.yozma-newsletter-right form {
+    padding: 20px;
+}
+
+.yozma-newsletter-right {
+    padding: 20px;
+}
+
+.yozma-newsletter-right input[type="email"],
+.yozma-newsletter-right input[type="checkbox"],
+.yozma-newsletter-right input[type="submit"] {
+    margin-bottom: 14px;
+    margin-top: 14px;
+}
+
+.yozma-newsletter-right input[type="submit"] {
+    background-color: #C2252C;
+    color: #fff;
+    font-size: 16px;
+    padding: 20px 30px;
+    border: none;
+    cursor: pointer;
+
+    box-shadow: 0 2px 4px #F3D3D5;
+}
+
+.yozma-newsletter-right input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.yozma-products-discount {
+    display: flex;
+}
