@@ -1,6 +1,6 @@
 <?php
 
-class NewsletterManager {
+class Yozma_NewsletterManager {
 	/**
 	 * Add an admin menu page for newsletter subscriptions.
 	 */
@@ -9,13 +9,13 @@ class NewsletterManager {
 			'Newsletter Subscriptions',            // Page title
 			'Newsletter Subs',                     // Menu title
 			'manage_options',                      // Capability
-			'my-gutenberg-plugin-newsletter-subs', // Menu slug
+			'yozma-newsletter-subs',               // Menu slug
 			[
 				self::class,
 				'newsletter_subs_page',
 			],                                     // Callback function for displaying the page
 			'dashicons-email-alt',                 // Icon
-			6                           // Position in the menu
+			6                                      // Position in the menu
 		);
 	}
 
@@ -24,16 +24,16 @@ class NewsletterManager {
 	 */
 	public static function create_table_sub() {
 		global $wpdb;
-		$table_name = $wpdb->prefix . 'sub_newsletter';
+		$table_name = $wpdb->prefix . 'yozma_sub_newsletter';
 
 		if ( $wpdb->get_var( "SHOW TABLES LIKE '{$table_name}'" ) != $table_name ) {
 			$charset_collate = $wpdb->get_charset_collate();
 
 			$sql = "CREATE TABLE $table_name (
-            id mediumint(9) NOT NULL AUTO_INCREMENT,
-            email varchar(255) NOT NULL,
-            PRIMARY KEY  (id)
-        ) $charset_collate;";
+                id mediumint(9) NOT NULL AUTO_INCREMENT,
+                email varchar(255) NOT NULL,
+                PRIMARY KEY  (id)
+            ) $charset_collate;";
 
 			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 			dbDelta( $sql );
@@ -45,7 +45,7 @@ class NewsletterManager {
 	 */
 	public static function newsletter_subs_page() {
 		global $wpdb;
-		$table_name = $wpdb->prefix . 'sub_newsletter';
+		$table_name = $wpdb->prefix . 'yozma_sub_newsletter';
 		$subscribers = $wpdb->get_results( "SELECT id, email FROM $table_name" );
 
 		echo '<div class="wrap"><h1>Newsletter Subscribers</h1>';
@@ -72,7 +72,7 @@ class NewsletterManager {
 
 		// Insert the sanitized email into the subscription table
 		global $wpdb;
-		$table_name = $wpdb->prefix . 'sub_newsletter';
+		$table_name = $wpdb->prefix . 'yozma_sub_newsletter';
 		$wpdb->insert( $table_name, array( 'email' => $email ) );
 
 		// Redirect to the referring page after submission
