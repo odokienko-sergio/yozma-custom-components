@@ -10,30 +10,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die;
 }
 
-// Include the NewsletterManager class
-require_once plugin_dir_path( __FILE__ ) . 'classes/NewsletterManager.php';
+// Include the Yozma_NewsletterManager class
+require_once plugin_dir_path( __FILE__ ) . 'classes/Yozma_NewsletterManager.php';
 
 // Include shortcode functions
 require_once plugin_dir_path( __FILE__ ) . 'includes/shortcodes.php';
 
-// Register admin menu using the NewsletterManager class method
+// Register admin menu using the Yozma_NewsletterManager class method
 add_action( 'admin_menu', [
-	'NewsletterManager',
+	'Yozma_NewsletterManager',
 	'add_admin_menu',
 ] );
 
-// Register activation hook using the NewsletterManager class method
+// Register activation hook using the Yozma_NewsletterManager class method
 register_activation_hook( __FILE__, [
-	'NewsletterManager',
+	'Yozma_NewsletterManager',
 	'create_table_sub',
 ] );
 
-// Register other hooks using the NewsletterManager class methods
+// Register other hooks using the Yozma_NewsletterManager class methods
 add_action( 'admin_post_nopriv_yozma_process_newsletter', [
-	'NewsletterManager',
+	'Yozma_NewsletterManager',
 	'newsletter_process',
 ] );
 add_action( 'admin_post_yozma_process_newsletter', [
-	'NewsletterManager',
+	'Yozma_NewsletterManager',
 	'newsletter_process',
 ] );
